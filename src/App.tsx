@@ -1,35 +1,50 @@
 // import { useState } from 'react';
 
-import Input from "./Input";
+import { useState } from "react";
+import LabelWithInput from "./assets/LabelWithInput";
+import Button from "./Button";
 
 function App() {
+  const [nameValue, setNameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [passwordCheckValue, setPasswordCheckValue] = useState("");
+
+  function printInput({
+    nameValue,
+    emailValue,
+    passwordValue,
+    passwordCheckValue,
+  }: {
+    nameValue: string;
+    emailValue: string;
+    passwordValue: string;
+    passwordCheckValue: string;
+  }) {
+    console.log(
+      "이름 : " +
+        nameValue +
+        `\n` +
+        "이메일 : " +
+        emailValue +
+        `\n` +
+        "비밀번호 : " +
+        passwordValue +
+        `\n` +
+        "비밀번호 확인 : " +
+        passwordCheckValue
+    );
+  }
+
   const inputLabelStyle: React.CSSProperties = {
     display: "flex",
-    // flexDirection: "column",
+    flexDirection: "column",
     gap: "1rem",
     alignItems: "center",
   };
 
-  const inputLabelLabelStyle = {
-    display: "inline-block",
-    fontSize: "0.9rem",
-    width: "5rem",
-    // textAlign: "right",
-    color: "#e66f80",
-  };
-
-  const buttenStyle = {
-    backgroundColor: "#f82a498b",
-    fontSize: "0.6rem",
-    color: "white",
-    border: "none",
-    borderRadius: "0.25rem",
-    padding: "0.5rem 1rem",
-    transition: "backgroundColor 0.5s",
-  };
-
   return (
-    <body
+    <div
       style={{
         height: "100%",
         margin: "0",
@@ -62,42 +77,70 @@ function App() {
 
         <div className="form-group" id="input">
           <div className="input-label" style={inputLabelStyle}>
-            <label htmlFor="name" style={inputLabelLabelStyle}>
-              이름
-            </label>
-            <Input type="text" placeholder="이름을 입력하세요" />
+            <LabelWithInput
+              htmlFor="text"
+              label="이름"
+              type="text"
+              name="name"
+              placeholder="이름을 입력하세요"
+              value={nameValue}
+              onChange={(e) => setNameValue(e.target.value)}
+            />
           </div>
           <div id="nameError" className="error-message"></div>
           <div className="input-label" style={inputLabelStyle}>
-            <label htmlFor="email" style={inputLabelLabelStyle}>
-              이메일
-            </label>
-            <Input type="email" placeholder="이메일을 입력하세요" />
+            <LabelWithInput
+              htmlFor="email"
+              label="이메일"
+              type="email"
+              name="emil"
+              placeholder="이메일을 입력하세요"
+              value={emailValue}
+              onChange={(e) => setEmailValue(e.target.value)}
+            />
           </div>
 
           <div id="emailError" className="error-message"></div>
           <div className="input-label">
-            <label htmlFor="password" style={inputLabelLabelStyle}>
-              비밀번호
-            </label>
-            <Input type="password" placeholder="비밀번호를 입력하세요" />
+            <LabelWithInput
+              htmlFor="text"
+              label="비밀번호"
+              type="text"
+              name="password"
+              placeholder="비밀번호를 입력하세요"
+              value={passwordValue}
+              onChange={(e) => setPasswordValue(e.target.value)}
+            />
           </div>
           <div id="passwordError" className="error-message"></div>
           <div className="input-label" style={inputLabelStyle}>
-            <label htmlFor="passwordConfirm" style={inputLabelLabelStyle}>
-              비밀번호 확인
-            </label>
-            <Input type="password" placeholder="비밀번호를 입력하세요" />
+            <LabelWithInput
+              htmlFor="password"
+              label="비밀번호 확인"
+              type="password"
+              name="passwordCheck"
+              placeholder="비밀번호를 입력하세요"
+              value={passwordCheckValue}
+              onChange={(e) => setPasswordCheckValue(e.target.value)}
+            />
           </div>
           <div id="passwordConfirmError" className="error-message"></div>
         </div>
-        <button id="register" style={buttenStyle}>
-          등록하기🏮
-        </button>
+        <Button
+          id="reguster"
+          value="등록하기🏮"
+          onClick={() =>
+            printInput({
+              nameValue,
+              emailValue,
+              passwordValue,
+              passwordCheckValue,
+            })
+          }
+        />
       </div>
-    </body>
+    </div>
   );
 }
-
 
 export default App;

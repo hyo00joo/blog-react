@@ -1,12 +1,21 @@
+
+
 type InputProps = {
   className?: string;
   name?: string;
   id?: string;
   type?: string;
   placeholder?: string;
+  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function Input({ className, name, id, type, placeholder }: InputProps) {
+
+function Input({ className, name, id, type, placeholder, value, onChange }: InputProps) {
+  
+  
+ 
+
   return (
     <input
       style={{
@@ -18,6 +27,9 @@ function Input({ className, name, id, type, placeholder }: InputProps) {
       id={id}
       type={type}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+
     />
   );
 }
