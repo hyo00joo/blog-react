@@ -1,10 +1,12 @@
 // import { useState } from 'react';
 
 import { useState } from "react";
-import LabelWithInput from "./assets/LabelWithInput";
+import LabelWithInput from "./LabelWithInput";
 import Button from "./Button";
 
 function App() {
+
+
   const [nameValue, setNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
@@ -80,6 +82,7 @@ function App() {
             <LabelWithInput
               htmlFor="text"
               label="이름"
+               id="name"
               type="text"
               name="name"
               placeholder="이름을 입력하세요"
@@ -92,6 +95,7 @@ function App() {
             <LabelWithInput
               htmlFor="email"
               label="이메일"
+              id="email"
               type="email"
               name="emil"
               placeholder="이메일을 입력하세요"
@@ -103,8 +107,9 @@ function App() {
           <div id="emailError" className="error-message"></div>
           <div className="input-label">
             <LabelWithInput
-              htmlFor="text"
+              htmlFor="password"
               label="비밀번호"
+              id="password"
               type="text"
               name="password"
               placeholder="비밀번호를 입력하세요"
@@ -115,8 +120,9 @@ function App() {
           <div id="passwordError" className="error-message"></div>
           <div className="input-label" style={inputLabelStyle}>
             <LabelWithInput
-              htmlFor="password"
+              htmlFor="passwordCheck"
               label="비밀번호 확인"
+              id="passwordCheck "
               type="password"
               name="passwordCheck"
               placeholder="비밀번호를 입력하세요"

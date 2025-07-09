@@ -1,5 +1,5 @@
-import Label from "../Label";
-import Input from "../Input";
+import Label from "./Label";
+import Input from "./Input";
 
 type LabelWithInputProps = {
   //input
@@ -25,11 +25,11 @@ function LabelWithInput({
   htmlFor,
   label,
   value,
-  onChange
+  onChange,
 }: LabelWithInputProps) {
   return (
     <div>
-      <Label htmlFor={htmlFor}>{label}</Label>
+      <Label htmlFor={htmlFor} children={label} />
       <Input
         className={className}
         name={name}
